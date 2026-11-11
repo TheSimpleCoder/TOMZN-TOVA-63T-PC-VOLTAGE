@@ -39,6 +39,10 @@ def main():
 
                 if voltage:
                     print(f"VOLTAGE:{decode_voltage(voltage)}")
+                    time.sleep(3)
+                    device.set_value('35', 'online')
+                else:
+                    continue
 
             if time.monotonic() - last_heartbeat >= HEARTBEAT_INTERVAL:
                 device.send(device.generate_payload(tinytuya.HEART_BEAT))
